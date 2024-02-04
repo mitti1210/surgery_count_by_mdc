@@ -20,6 +20,7 @@ mdc <- read_rds(here("rds", "mdc.rds"))
 
 # UI定義
 ui <- fluidPage(
+  titlePanel("Download Helper"),
   sidebarLayout(
     sidebarPanel(width = 4,
       selectInput("MDC", "MDC:", choices = str_c("MDC", str_pad(1:18, width = 2, pad = 0))),
@@ -149,7 +150,7 @@ server <- function(input, output, session) {
   
   # データテーブルの表示
   output$dataTable <- renderDT({
-    datatable(filteredData(), options = list(pageLength = 50))
+    datatable(filteredData(), options = list(pageLength = 10))
   })
   
 
